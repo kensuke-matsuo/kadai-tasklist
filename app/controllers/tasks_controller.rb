@@ -3,7 +3,6 @@ class TasksController < ApplicationController
     before_action :correct_user, only: [:destroy, :show, :edit, :update]
     
     def index
-        @task = current_user.tasks.build
         @tasks = current_user.tasks.order(id: :desc).page(params[:page])
         
     end
@@ -12,9 +11,6 @@ class TasksController < ApplicationController
     end
 
     def edit
- Rails.logger.info("**********task**********")
- Rails.logger.info(@task.id)
- Rails.logger.info(@task.content)
     end
     
     def new
