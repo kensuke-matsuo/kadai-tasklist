@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destory'
-  get 'users/index'
   get 'users/new'
   get 'users/create'
     root to: 'tasks#index'
