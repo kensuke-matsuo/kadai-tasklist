@@ -1,23 +1,17 @@
 class TasksController < ApplicationController
-    before_action :require_user_logged_in, only: [:show, :edit, :new, :create, :update, :destroy]
+    before_action :require_user_logged_in
     before_action :correct_user, only: [:destroy, :show, :edit, :update]
     
     def index
-        if logged_in?
         @task = current_user.tasks.build
         @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-        else
-        redirect_to login_path
-        end
         
     end
     
     def show
-        @task = Task.find(params[:id])
     end
 
     def edit
-        @task = Task.find(params[:id])
  Rails.logger.info("**********task**********")
  Rails.logger.info(@task.id)
  Rails.logger.info(@task.content)
